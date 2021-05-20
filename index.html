@@ -108,6 +108,7 @@
 
                 console.log(result)
                 let ul = document.querySelector("ul")
+                ul.innerHTML=""
                 if(result){
                     result.forEach(record=>{
                         let div = document.createElement("div")
@@ -155,7 +156,6 @@
                         phone.innerText=record.Phone;
                         div.append(name,email,phone, updateButton,deleteButton)
                         let ul= document.querySelector("ul")
-                        ul.innerHTML=""
                         ul.append(div)
 
                     })
