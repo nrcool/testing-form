@@ -92,7 +92,6 @@
         const scriptURL = 'https://sheetdb.io/api/v1/vs1targnvk22k'
         const form = document.forms['google-sheet']
         let formData =new FormData(form)
-        formData.append("id",new Date().getTime().toString())
         form.addEventListener('submit', e => {
           e.preventDefault()
           fetch(scriptURL, { method: 'POST', body: formData})
@@ -124,7 +123,9 @@
                         email.innerText=record.Email;
                         phone.innerText=record.Phone;
                         div.append(name,email,phone, button)
-                        document.querySelector("ul").append(div)
+                        let ul= document.querySelector("ul")
+                        ul.innerHTML=""
+                        ul.append(div)
 
                     })
                 }
