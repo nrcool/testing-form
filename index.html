@@ -139,8 +139,7 @@
                                 name.contentEditable=false;
                                 email.contentEditable=false;
                                 phone.contentEditable=false;
-                                fetch(`${scriptURL}/batch_update`,{method:"PUT",data: JSON.stringify({
-                                    query:`id=${record.id}` ,
+                                fetch(`${scriptURL}/id/${record.id}`,{method:"PUT",body: JSON.stringify({
                                     Name: name.innerText,
                                     Email: email.innerText,
                                     Phone:phone.innerText 
