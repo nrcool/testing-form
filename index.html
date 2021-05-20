@@ -139,10 +139,10 @@
                                 name.contentEditable=false;
                                 email.contentEditable=false;
                                 phone.contentEditable=false;
-                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",data: JSON.stringify({
-                                    Name: name.innerText,
+                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",body: JSON.stringify({
+                                    data:{Name: name.innerText,
                                     Email: email.innerText,
-                                    Phone:phone.innerText 
+                                    Phone:phone.innerText }
                                 }) }).then(res=>res.json()).then(()=>alert("record updated"))
                             }
                         })
