@@ -85,7 +85,7 @@
         <div>
             <h2>Get All data</h2>
             <button id="getdatabtn">Get</button>
-            <ul></ul>
+            <ul class="row"></ul>
         </div>
     </div>
       <script>
@@ -102,7 +102,30 @@
         })
 
         document.getElementById("getdatabtn").addEventListener("click",()=>{
-            fetch(scriptURL).then(res=>res.json()).then(result=>console.log(result))
+            fetch(scriptURL).then(res=>res.json()).then(result=>{
+
+                console.log(result)
+                let ul = document.querySelector("ul")
+                if(result){
+                    result.forEach(record=>{
+                        let div = document.createElement("div")
+                        div.classList.add("col-md-3")
+                        let name = document.createElement("h3")
+                        let email=document.createElement("h3")
+                        let phone = document.createElement("h4")
+                        let button= document.createElement("button")
+                        button.classList.add("btn","btn-danger")
+                        btn.addEventListener("click",()=>{
+                            fetch(scriptURL,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
+                        })
+                        button.innerText="delete"
+                        name.innerText=record.Name;
+                        email.innerText=record.Email;
+                        phone.innerText=record.Phone;
+                        div.append(name,email,phone, button)
+                    })
+                }
+                })
         })
       </script>
 
