@@ -139,7 +139,7 @@
                                 name.contentEditable=false;
                                 email.contentEditable=false;
                                 phone.contentEditable=false;
-                                fetch(`${scriptURL}/id/${record.id}`,{method:"PUT",data: JSON.stringify({
+                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",data: JSON.stringify({
                                     Name: name.innerText,
                                     Email: email.innerText,
                                     Phone:phone.innerText 
