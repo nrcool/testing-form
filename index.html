@@ -145,7 +145,7 @@
                                 updateData.append("Email",email.innerText)
                                 updateData.append("Phone",phone.innerText)
 
-                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",body:updateData }).then(res=>res.json()).then(()=>alert("record updated"))
+                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",body:updateData }).then(res=>res.json()).then(()=>alert("record updated")).catch(err=>console.log(err.message))
                             }
                         })
 
