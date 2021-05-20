@@ -95,7 +95,7 @@
         formData.append("id",new Date().getTime().toString())
         form.addEventListener('submit', e => {
           e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: })
+          fetch(scriptURL, { method: 'POST', body: formData})
             .then(response => { console.log(response)
                 
                 alert("Thanks for Contacting us..! We Will Contact You Soon...")})
