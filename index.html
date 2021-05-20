@@ -116,7 +116,7 @@
                         let button= document.createElement("button")
                         button.classList.add("btn","btn-danger")
                         button.addEventListener("click",()=>{
-                            fetch(`${scriptURL}/id/${record.id}`,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
+                            fetch(`${scriptURL}/id/${record.email}`,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
                         })
                         button.innerText="delete"
                         name.innerText=record.Name;
