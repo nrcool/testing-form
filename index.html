@@ -140,7 +140,7 @@
                                 email.contentEditable=false;
                                 phone.contentEditable=false;
                                 fetch(scriptURL,{method:"PUT",data: JSON.stringify({
-                                    query:id=record.id,
+                                    query:`id=${record.id}` ,
                                     Name: name.innerText,
                                     Email: email.innerText,
                                     PHone:phone.innerText 
