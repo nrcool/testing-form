@@ -132,7 +132,7 @@
                                 name.contentEditable=true;
                                 email.contentEditable=true;
                                 phone.contentEditable=true;
-
+                                
                             }else{
                                 updateButton.classList.remove("btn-secondary")
                                 updateButton.classList.add("btn-success")
@@ -145,7 +145,7 @@
                                 updateData.append("Email",email.innerText)
                                 updateData.append("Phone",phone.innerText)
 
-                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",body:updateData }).then(res=>res.json()).then(()=>alert("record updated")).catch(err=>console.log(err.message))
+                                fetch(`${scriptURL}/id/${record.id}`,{method:"PATCH",body:updateData }).then(res=>res.json()).then((result)=>{console.log(result) ;alert("record updated")}).catch(err=>console.log(err.message))
                             }
                         })
 
