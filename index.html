@@ -115,7 +115,7 @@
                         let phone = document.createElement("h4")
                         let button= document.createElement("button")
                         button.classList.add("btn","btn-danger")
-                        btn.addEventListener("click",()=>{
+                        button.addEventListener("click",()=>{
                             fetch(scriptURL,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
                         })
                         button.innerText="delete"
