@@ -84,7 +84,7 @@
         </div>
         <div>
             <h2>Get All data</h2>
-            <button id="getdatabtn">Get</button>
+            <button class="btn btn-success" id="getdatabtn">Get</button>
             <ul class="row"></ul>
         </div>
     </div>
@@ -112,19 +112,48 @@
                     result.forEach(record=>{
                         let div = document.createElement("div")
                         div.classList.add("col-md-3")
-                        let name = document.createElement("h3")
-                        let email=document.createElement("h3")
-                        let phone = document.createElement("h4")
-                        let button= document.createElement("button")
-                        button.classList.add("btn","btn-danger")
-                        button.addEventListener("click",()=>{
+                        div.style.boxShadow="2px 3px 5px black, inset 1px 2px 4px gray";
+                        let name = document.createElement("h4")
+                        let email=document.createElement("p")
+                        let phone = document.createElement("p")
+                        let updateButton= document.createElement("button")
+                        updateButton.classList.add("btn","btn-secondary")
+                        let deleteButton= document.createElement("button")
+                        deleteButton.classList.add("btn","btn-danger")
+                        deleteButton.addEventListener("click",()=>{
                             fetch(`${scriptURL}/id/${record.id}`,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
                         })
-                        button.innerText="delete"
+                        updateButton.addEventListener("click",()=>{
+                            if(updateButton.classList.contains("btn-secondary")){
+                                updateButton.classList.remove("btn-secondary")
+                                updateButton.classList.add("btn-success")
+                                updateButton.innerText="Save"
+                                name.contentEditable=true;
+                                email.contentEditable=true;
+                                phone.contentEditable=true;
+
+                            }else{
+                                updateButton.classList.remove("btn-secondary")
+                                updateButton.classList.add("btn-success")
+                                updateButton.innerText="Edit"
+                                name.contentEditable=false;
+                                email.contentEditable=false;
+                                phone.contentEditable=false;
+                                fetch(scriptURL,{method:"PUT",data: JSON.stringify({
+                                    query:id=record.id,
+                                    Name: name.innerText,
+                                    Email: email.innerText,
+                                    PHone:phone.innerText 
+                                }) }).then(res=>res.json()).then(()=>alert("record updated"))
+                            }
+                        })
+
+                        deleteButton.innerText="Delete"
+                        updateButton.innerText="Edit"
                         name.innerText=record.Name;
                         email.innerText=record.Email;
                         phone.innerText=record.Phone;
-                        div.append(name,email,phone, button)
+                        div.append(name,email,phone, updateButton,deleteButton)
                         let ul= document.querySelector("ul")
                         ul.innerHTML=""
                         ul.append(div)
