@@ -139,11 +139,11 @@
                                 name.contentEditable=false;
                                 email.contentEditable=false;
                                 phone.contentEditable=false;
-                                fetch(scriptURL,{method:"PUT",data: JSON.stringify({
+                                fetch(`${scriptURL}/batch_update`,{method:"PUT",data: JSON.stringify({
                                     query:`id=${record.id}` ,
                                     Name: name.innerText,
                                     Email: email.innerText,
-                                    PHone:phone.innerText 
+                                    Phone:phone.innerText 
                                 }) }).then(res=>res.json()).then(()=>alert("record updated"))
                             }
                         })
