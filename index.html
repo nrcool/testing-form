@@ -91,10 +91,11 @@
       <script>
         const scriptURL = 'https://sheetdb.io/api/v1/vs1targnvk22k'
         const form = document.forms['google-sheet']
-      
+        let formData =new FormData(form)
+        formData.append("id",new Date().getTime().toString())
         form.addEventListener('submit', e => {
           e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          fetch(scriptURL, { method: 'POST', body: })
             .then(response => { console.log(response)
                 
                 alert("Thanks for Contacting us..! We Will Contact You Soon...")})
@@ -116,7 +117,7 @@
                         let button= document.createElement("button")
                         button.classList.add("btn","btn-danger")
                         button.addEventListener("click",()=>{
-                            fetch(scriptURL,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
+                            fetch(`${scriptURL}/id/${record.id}`,{method:"DELETE"}).then(res=>res.json()).then(result=>console.log(result))
                         })
                         button.innerText="delete"
                         name.innerText=record.Name;
